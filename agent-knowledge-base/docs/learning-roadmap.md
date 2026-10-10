@@ -48,3 +48,23 @@ Harness 是围绕模型运行的执行系统。重点研究：
 2. 实现一个带工具调用、超时和有限重试的最小 Agent。
 3. 为一类真实任务设计成功标准和失败分类表。
 4. 为长任务补充检查点、恢复和人工接管机制。
+
+## 四阶段动手安排
+
+以下时间与产物是本库学习建议，可按每周一个阶段推进。
+
+| 阶段 | 配套内容 | 可检查产物 |
+| --- | --- | --- |
+| 1：理解闭环 | [核心概念](core-concepts.md)、[离线演示](../examples/minimal-agent/README.md) | 流程图与成功/失败事件解释 |
+| 2：接入工具 | [工具与 MCP](tools-and-mcp.md)、[资料助手练习](practice-projects.md) | 有出处的检索结果、参数与权限测试 |
+| 3：管理执行 | [Harness 工程](harness-engineering.md)、[框架选型](framework-selection.md) | 检查点、预算、恢复和副作用记录 |
+| 4：评测扩展 | [评测](evaluation.md)、[安全](safety.md)、[多 Agent](multi-agent.md) | 固定任务与总预算下的对照报告 |
+
+## 配套课程与先修知识
+
+- 能读写基本 Python、异常与 JSON，即可运行离线演示；接模型前再学习供应商的工具接口、计费与限流。
+- [Microsoft AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners)：按设计模式完成课程练习，检查当前版本的框架和账号要求。
+- [Hugging Face Agents Course](https://github.com/huggingface/agents-course)：结合[课程页面](https://huggingface.co/learn/agents-course/unit0/introduction)学习概念与工具。
+- 增加能力时再查[GitHub 项目导航](../resources/github-projects.md)，不必先掌握所有框架。
+
+每个阶段保留提交、命令、环境与原始观察；至少解释一个失败。用[复现卡片](../templates/project-card.md)和[评测模板](../templates/evaluation-report.md)记录证据。

@@ -1,0 +1,42 @@
+name: Knowledge base checks
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.10"
+          - os: windows-latest
+            python: "3.11"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Check local Markdown file links
+        run: python scripts/check_docs.py
+      - name: Test link checker
+        run: python -m unittest discover -s scripts -p "test_*.py"
+      - name: Test offline harness
+        run: python -m unittest discover -s agent-knowledge-base/examples/minimal-agent -p "test_*.py"
+      - name: Check expected fixture behavior
+        run: python agent-knowledge-base/examples/minimal-agent/run_eval.py
