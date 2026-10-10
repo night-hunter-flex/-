@@ -40,3 +40,5 @@ jobs:
         run: python -m unittest discover -s agent-knowledge-base/examples/minimal-agent -p "test_*.py"
       - name: Check expected fixture behavior
         run: python agent-knowledge-base/examples/minimal-agent/run_eval.py
+      - name: Test real LLM tool loop with mocked API responses
+        run: python -m unittest discover -s agent-knowledge-base/examples/llm-tool-agent -p "test_*.py"
