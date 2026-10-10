@@ -1,29 +1,27 @@
-# Agent 资料汇总
+# Agent 知识库目录
 
-面向学习与工程实践的 Agent 知识库，持续整理核心概念、论文、框架、评测方法与落地经验。
+完整介绍、运行命令与贡献方式见[仓库首页](../README.md)。
 
-## 内容导航
+## 学习与工程
 
-- [学习路线](docs/learning-roadmap.md)：从运行原理逐步走到工程落地
-- [核心概念](docs/core-concepts.md)：Agent 闭环、Harness 与质量评审
-- [资料索引](resources/reading-list.md)：论文、官方文档和实践材料
-- [资料卡片模板](resources/template.md)：统一记录贡献、局限和可迁移思路
+| 文档 | 内容 |
+| --- | --- |
+| [核心概念](docs/core-concepts.md) | 行动闭环、状态、记忆、模型与 Harness |
+| [学习路线](docs/learning-roadmap.md) | 四阶段学习与验收产物 |
+| [框架选型](docs/framework-selection.md) | 用任务约束比较框架，而不是比较演示效果 |
+| [Harness 工程](docs/harness-engineering.md) | 上下文、预算、恢复、幂等与追踪 |
+| [工具与 MCP](docs/tools-and-mcp.md) | 工具契约、协议角色与权限 |
+| [多 Agent 协作](docs/multi-agent.md) | 委派、交接、汇总与成本对照 |
+| [评测指南](docs/evaluation.md) | 任务集、指标、失败分类与回归 |
+| [安全指南](docs/safety.md) | 不可信输入、权限、外部副作用与测试 |
+| [实践项目](docs/practice-projects.md) | 四个循序渐进的项目 |
 
-## 重点主题
+## 资料与动手
 
-- Agent 基础：ReAct、Plan-and-Execute、工具调用、状态与记忆
-- Agent Harness：任务分解、上下文管理、执行预算、重试与恢复
-- 框架：LangGraph、AutoGen、Agents SDK 等
-- 评测与质量：任务成功率、过程证据、回归测试、人工评审
-- 工程实践：安全边界、可观测性、长任务与多 Agent 协作
-
-## 整理原则
-
-1. 优先记录论文原文、官方文档和可复现代码。
-2. 每项资料标注类型、主题、发布日期或版本、核心贡献和适用场景。
-3. 区分来源中的结论与个人分析；框架信息注明核验日期。
-4. 结合工程落地，关注长任务、复杂文件操作、环境反馈、评测闭环和人机协作。
-
-## 如何补充资料
-
-先在资料索引中添加条目；需要深入分析时，为主题创建单独文档，再把链接补充到本页导航。
+- [GitHub 项目导航](resources/github-projects.md)
+- [论文与官方文档索引](resources/reading-list.md)
+- [来源核验说明](resources/verification-notes.md)
+- [资料分析卡片](resources/template.md)
+- [项目复现卡片](templates/project-card.md)
+- [评测报告模板](templates/evaluation-report.md)
+- [离线闭环演示](examples/minimal-agent/README.md)

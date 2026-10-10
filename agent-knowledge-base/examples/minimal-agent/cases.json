@@ -1,0 +1,67 @@
+[
+  {
+    "id": "arithmetic",
+    "expression": "(12 + 8) * 3",
+    "expected_status": "completed",
+    "expected_reason": "policy_finished",
+    "expected_result": 60
+  },
+  {
+    "id": "negative_decimal",
+    "expression": "-2.5 + 4 / 2",
+    "expected_status": "completed",
+    "expected_reason": "policy_finished",
+    "expected_result": -0.5
+  },
+  {
+    "id": "transient_recovery",
+    "expression": "12 / 3",
+    "options": {
+      "fail_first": true
+    },
+    "expected_status": "completed",
+    "expected_reason": "policy_finished",
+    "expected_result": 4
+  },
+  {
+    "id": "division_by_zero",
+    "expression": "1 / 0",
+    "expected_status": "failed",
+    "expected_reason": "division_by_zero"
+  },
+  {
+    "id": "unsupported_function",
+    "expression": "abs(-1)",
+    "expected_status": "failed",
+    "expected_reason": "invalid_expression"
+  },
+  {
+    "id": "retry_exhausted",
+    "expression": "1 + 1",
+    "options": {
+      "fail_first": true,
+      "max_retries": 0
+    },
+    "expected_status": "failed",
+    "expected_reason": "temporary_unavailable"
+  },
+  {
+    "id": "call_budget",
+    "expression": "1 + 1",
+    "options": {
+      "fail_first": true,
+      "max_tool_calls": 1
+    },
+    "expected_status": "budget_exceeded",
+    "expected_reason": "max_tool_calls"
+  },
+  {
+    "id": "step_budget",
+    "expression": "1 + 1",
+    "options": {
+      "max_steps": 1
+    },
+    "expected_status": "budget_exceeded",
+    "expected_reason": "max_steps"
+  }
+]

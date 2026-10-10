@@ -1,29 +1,69 @@
-# Agent 资料汇总
+# Agent：从原理到工程实践
 
-面向学习与工程实践的 Agent 知识库，持续整理核心概念、论文、框架、评测方法与落地经验。
+一个面向学习与工程实践的中文 Agent 知识库。围绕“理解闭环 → 实现工具 → 管理状态 → 评估结果 → 处理真实约束”，整理原始论文、官方文档、GitHub 项目和可运行练习。
 
-## 内容导航
+适合具备基本 Python、HTTP/JSON 和大模型使用经验的读者。首次接触 Agent，可以先读核心概念，再运行离线演示；已经在做项目，可以直接进入框架选型和评测指南。
 
-- [学习路线](docs/learning-roadmap.md)：从运行原理逐步走到工程落地
-- [核心概念](docs/core-concepts.md)：Agent 闭环、Harness 与质量评审
-- [资料索引](resources/reading-list.md)：论文、官方文档和实践材料
-- [资料卡片模板](resources/template.md)：统一记录贡献、局限和可迁移思路
+## 从这里开始
 
-## 重点主题
+| 你的目标 | 建议入口 | 可以得到什么 |
+| --- | --- | --- |
+| 理解 Agent 如何工作 | [核心概念](agent-knowledge-base/docs/core-concepts.md) | 模型、工具、状态、Harness 和停止条件的分工 |
+| 按顺序学习 | [学习路线](agent-knowledge-base/docs/learning-roadmap.md) | 四个阶段、对应资料和验收产物 |
+| 找项目和选框架 | [GitHub 项目导航](agent-knowledge-base/resources/github-projects.md) · [选型指南](agent-knowledge-base/docs/framework-selection.md) | 项目定位、可借鉴设计和适用边界 |
+| 动手完成一个项目 | [实践项目](agent-knowledge-base/docs/practice-projects.md) · [离线演示](agent-knowledge-base/examples/minimal-agent/README.md) | 从执行循环到带证据的资料助手 |
+| 做稳定的工程系统 | [Harness 工程](agent-knowledge-base/docs/harness-engineering.md) | 预算、恢复、幂等性和运行记录 |
+| 接工具和外部服务 | [工具与 MCP](agent-knowledge-base/docs/tools-and-mcp.md) | 输入输出契约、权限和协议边界 |
+| 判断效果是否提升 | [评测指南](agent-knowledge-base/docs/evaluation.md) | 成功标准、失败分类和公平对照 |
+| 增加协作与安全边界 | [多 Agent](agent-knowledge-base/docs/multi-agent.md) · [安全指南](agent-knowledge-base/docs/safety.md) | 委派、交接、审批和不可信输入处理 |
 
-- Agent 基础：ReAct、Plan-and-Execute、工具调用、状态与记忆
-- Agent Harness：任务分解、上下文管理、执行预算、重试与恢复
-- 框架：LangGraph、AutoGen、Agents SDK 等
-- 评测与质量：任务成功率、过程证据、回归测试、人工评审
-- 工程实践：安全边界、可观测性、长任务与多 Agent 协作
+## 五分钟运行一个闭环
 
-## 整理原则
+克隆仓库后，在仓库根目录执行。需要 Python 3.10 或更高版本，仅使用标准库，无需安装依赖、联网或配置 API Key。
 
-1. 优先记录论文原文、官方文档和可复现代码。
-2. 每项资料标注类型、主题、发布日期或版本、核心贡献和适用场景。
-3. 区分来源中的结论与个人分析；框架信息注明核验日期。
-4. 结合工程落地，关注长任务、复杂文件操作、环境反馈、评测闭环和人机协作。
+```bash
+git clone https://github.com/night-hunter-flex/Agent.git
+cd Agent
+python agent-knowledge-base/examples/minimal-agent/demo.py --expression "(12 + 8) * 3"
+python agent-knowledge-base/examples/minimal-agent/demo.py --expression "12 / 3" --fail-first
+python agent-knowledge-base/examples/minimal-agent/run_eval.py
+```
 
-## 如何补充资料
+演示用确定性策略模拟动作选择，展示参数校验、工具观察、有限重试、步数与调用预算、结构化事件和停止状态。它没有调用语言模型；样例通过率用于检查执行机制，不能代表 LLM 的任务能力。详见[演示说明](agent-knowledge-base/examples/minimal-agent/README.md)。
 
-先在资料索引中添加条目；需要深入分析时，为主题创建单独文档，再把链接补充到本页导航。
+## 资料与模板
+
+- [资料索引](agent-knowledge-base/resources/reading-list.md)：基础论文、记忆与反思、评测基准和官方工程文档。
+- [资料分析卡片](agent-knowledge-base/resources/template.md)：记录来源、阅读范围、贡献、证据和局限。
+- [项目复现卡片](agent-knowledge-base/templates/project-card.md)：记录提交、环境、运行命令和验收结果。
+- [评测报告模板](agent-knowledge-base/templates/evaluation-report.md)：记录数据划分、预算、失败和对照结果。
+- [来源核验说明](agent-knowledge-base/resources/verification-notes.md)：说明本轮整理范围、核验方法和维护状态变化。
+
+## 目录结构
+
+```text
+Agent/
+├── README.md
+├── CONTRIBUTING.md
+├── agent-knowledge-base/
+│   ├── docs/                  # 概念与工程指南
+│   ├── resources/             # 论文、项目与来源记录
+│   ├── examples/minimal-agent/ # 离线闭环演示及回归用例
+│   └── templates/             # 复现与评测记录
+├── scripts/check_docs.py     # 本地 Markdown 文件链接检查
+└── .github/                  # 内容贡献模板与自动检查
+```
+
+## 整理原则与贡献
+
+优先使用原始论文、作者仓库和官方文档；项目介绍与本库建议分开表述。框架信息标注核验日期，复现记录固定版本或提交，不用 Star 数作为质量排名。引用外部项目的设计时保留出处；复制代码、图片或数据前检查相应许可。
+
+欢迎补充可复查的资料、复现记录、失败案例和文档修正。提交前请阅读[贡献指南](CONTRIBUTING.md)，并运行：
+
+```bash
+python scripts/check_docs.py
+python -m unittest discover -s agent-knowledge-base/examples/minimal-agent -p "test_*.py"
+python agent-knowledge-base/examples/minimal-agent/run_eval.py
+```
+
+项目与官方文档的最近核验日期：**2026-10-10**。链接有效性、功能实现和实验效果是不同层次的证据；本库不宣称已复现所有收录项目。
