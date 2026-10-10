@@ -4,6 +4,8 @@
 
 一本以中文为主的 AI Agent 工程实践手册，帮助开发者从“会调用大模型”走到“能设计、运行并评估 Agent 系统”。
 
+**旗舰示例：** [Evidence-First Research Agent](agent-knowledge-base/examples/research-agent/README.md) · 支持多轮检索、分段阅读、证据校验、失败反馈、运行预算与离线回归。
+
 **Start here:** [学习路线](agent-knowledge-base/docs/learning-roadmap.md) · [离线 5 分钟 Demo](agent-knowledge-base/examples/minimal-agent/README.md) · [真实 LLM 工具调用 Demo](agent-knowledge-base/examples/llm-tool-agent/README.md) · [评测指南](agent-knowledge-base/docs/evaluation.md)
 
 ## 为什么值得收藏？
@@ -12,6 +14,7 @@
 | --- | --- |
 | 一条可执行的学习路线 | 从 ReAct / Plan-and-Execute 到 Harness、MCP、Memory、Evals |
 | **无需 Key** 就能跑的 Agent 执行循环 | 标准库离线 Demo，含预算、重试、结构化事件与回归用例 |
+| 一个**有证据校验的研究 Agent** | 多工具检索 + 来源引用 + 校验驳回 + Harness 预算和可观测性 |
 | 一个**真实模型**工具调用闭环 | Responses API + 安全计算器 + 离线模拟测试 |
 | 不夸大结果的工程笔记 | 失败状态、约束边界、独立验收及工程模板 |
 
@@ -43,14 +46,14 @@ python agent-knowledge-base/examples/minimal-agent/demo.py --expression "(12 + 8
 python agent-knowledge-base/examples/minimal-agent/run_eval.py
 ```
 
-**B. 真实 LLM + 工具调用**（需要 API Key，可能产生费用）：
+**B. 多步资料研究 Agent（旗舰示例）**（需要 API Key，可能产生费用）：
 
 ```bash
 export OPENAI_API_KEY="your-key"  # Windows PowerShell 请看对应 README
-python agent-knowledge-base/examples/llm-tool-agent/agent.py --expression "(12 + 8) * 3"
+python agent-knowledge-base/examples/research-agent/research_agent.py --question "How do Agent Harness tool budgets work?"
 ```
 
-在线版会将工具结果通过 Responses API 送回模型。它是学习示例，不提供生产级沙箱或安全保证。详细限制与 PowerShell 命令见[在线示例说明](agent-knowledge-base/examples/llm-tool-agent/README.md)。
+研究 Agent 提供 `search_docs`、`read_document` 与 `submit_report` 三个工具，只有阅读过的精确引文能通过最终校验。在线调用需要 API Key，可能产生费用。查看[研究 Agent 的完整操作与安全边界](agent-knowledge-base/examples/research-agent/README.md)。另保留[最小 LLM 计算器入门](agent-knowledge-base/examples/llm-tool-agent/README.md)。
 
 ## 从这里开始
 
@@ -59,6 +62,7 @@ python agent-knowledge-base/examples/llm-tool-agent/agent.py --expression "(12 +
 | 理解 Agent 如何工作 | [核心概念](agent-knowledge-base/docs/core-concepts.md) | 模型、工具、状态、Harness 和停止条件的分工 |
 | 按顺序学习 | [学习路线](agent-knowledge-base/docs/learning-roadmap.md) | 四个阶段、对应资料和验收产物 |
 | 找项目和选框架 | [GitHub 项目导航](agent-knowledge-base/resources/github-projects.md) · [选型指南](agent-knowledge-base/docs/framework-selection.md) | 项目定位、可借鉴设计和适用边界 |
+| 运行多步研究 Agent | [Research Agent](agent-knowledge-base/examples/research-agent/README.md) | 检索、阅读、证据验证、反复修正与评测闭环 |
 | 体验真实 LLM 工具调用 | [在线 Agent Demo](agent-knowledge-base/examples/llm-tool-agent/README.md) | 真实模型执行受限计算器工具的完整闭环 |
 | 动手完成一个项目 | [实践项目](agent-knowledge-base/docs/practice-projects.md) · [离线演示](agent-knowledge-base/examples/minimal-agent/README.md) | 从执行循环到带证据的资料助手 |
 | 做稳定的工程系统 | [Harness 工程](agent-knowledge-base/docs/harness-engineering.md) | 预算、恢复、幂等性和运行记录 |
@@ -99,6 +103,7 @@ Agent/
 │   ├── resources/             # 论文、项目与来源记录
 │   ├── examples/minimal-agent/ # 离线闭环演示及回归用例
 │   ├── examples/llm-tool-agent/ # 真实 LLM + 工具调用
+│   ├── examples/research-agent/ # 多步资料研究 + 证据验收
 │   └── templates/             # 复现与评测记录
 ├── scripts/check_docs.py     # 本地 Markdown 文件链接检查
 └── .github/                  # 内容贡献模板与自动检查
@@ -114,6 +119,7 @@ Agent/
 python scripts/check_docs.py
 python -m unittest discover -s agent-knowledge-base/examples/minimal-agent -p "test_*.py"
 python agent-knowledge-base/examples/minimal-agent/run_eval.py
+python agent-knowledge-base/examples/research-agent/run_eval.py
 ```
 
 如果本项目帮助你理解或实现 Agent，欢迎通过 **Star** 收藏，并在 Issues 中反馈真正需要解决的工程问题。
