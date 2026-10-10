@@ -59,7 +59,8 @@ python agent-knowledge-base/examples/llm-tool-agent/agent.py --expression "(12 +
 | 理解 Agent 如何工作 | [核心概念](agent-knowledge-base/docs/core-concepts.md) | 模型、工具、状态、Harness 和停止条件的分工 |
 | 按顺序学习 | [学习路线](agent-knowledge-base/docs/learning-roadmap.md) | 四个阶段、对应资料和验收产物 |
 | 找项目和选框架 | [GitHub 项目导航](agent-knowledge-base/resources/github-projects.md) · [选型指南](agent-knowledge-base/docs/framework-selection.md) | 项目定位、可借鉴设计和适用边界 |
-| 体验真实 LLM 工具调用 | [在线 Agent Demo](agent-knowledge-base/examples/llm-tool-agent/README.md) | 真实模型执行受限计算器工具的完整闭环 |\n| 动手完成一个项目 | [实践项目](agent-knowledge-base/docs/practice-projects.md) · [离线演示](agent-knowledge-base/examples/minimal-agent/README.md) | 从执行循环到带证据的资料助手 |
+| 体验真实 LLM 工具调用 | [在线 Agent Demo](agent-knowledge-base/examples/llm-tool-agent/README.md) | 真实模型执行受限计算器工具的完整闭环 |
+| 动手完成一个项目 | [实践项目](agent-knowledge-base/docs/practice-projects.md) · [离线演示](agent-knowledge-base/examples/minimal-agent/README.md) | 从执行循环到带证据的资料助手 |
 | 做稳定的工程系统 | [Harness 工程](agent-knowledge-base/docs/harness-engineering.md) | 预算、恢复、幂等性和运行记录 |
 | 接工具和外部服务 | [工具与 MCP](agent-knowledge-base/docs/tools-and-mcp.md) | 输入输出契约、权限和协议边界 |
 | 判断效果是否提升 | [评测指南](agent-knowledge-base/docs/evaluation.md) | 成功标准、失败分类和公平对照 |
@@ -96,7 +97,8 @@ Agent/
 ├── agent-knowledge-base/
 │   ├── docs/                  # 概念与工程指南
 │   ├── resources/             # 论文、项目与来源记录
-│   ├── examples/minimal-agent/ # 离线闭环演示及回归用例\n│   ├── examples/llm-tool-agent/ # 真实 LLM + 工具调用
+│   ├── examples/minimal-agent/ # 离线闭环演示及回归用例
+│   ├── examples/llm-tool-agent/ # 真实 LLM + 工具调用
 │   └── templates/             # 复现与评测记录
 ├── scripts/check_docs.py     # 本地 Markdown 文件链接检查
 └── .github/                  # 内容贡献模板与自动检查
@@ -114,4 +116,6 @@ python -m unittest discover -s agent-knowledge-base/examples/minimal-agent -p "t
 python agent-knowledge-base/examples/minimal-agent/run_eval.py
 ```
 
-如果本项目帮助你理解或实现 Agent，欢迎通过 **Star** 收藏，并在 Issues 中反馈真正需要解决的工程问题。\n\n项目与官方文档的最近核验日期：**2026-10-10**。链接有效性、功能实现和实验效果是不同层次的证据；本库不宣称已复现所有收录项目。
+如果本项目帮助你理解或实现 Agent，欢迎通过 **Star** 收藏，并在 Issues 中反馈真正需要解决的工程问题。
+
+项目与官方文档的最近核验日期：**2026-10-10**。链接有效性、功能实现和实验效果是不同层次的证据；本库不宣称已复现所有收录项目。
