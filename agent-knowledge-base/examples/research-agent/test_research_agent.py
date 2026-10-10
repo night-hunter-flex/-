@@ -158,7 +158,7 @@ class ResearchAgentTests(unittest.TestCase):
 
     def test_no_corpus_index_outside_root(self):
         self.assertEqual(set(self.corpus.docs), {"harness.md", "other.md"})
-        self.assertTrue(self.corpus.search_docs("budget", 3)["hits"])
+        self.assertTrue(self.corpus.search_docs("budgets", 3)["hits"])
 
 
 if __name__ == "__main__":
