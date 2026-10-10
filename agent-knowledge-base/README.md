@@ -24,4 +24,5 @@
 - [资料分析卡片](resources/template.md)
 - [项目复现卡片](templates/project-card.md)
 - [评测报告模板](templates/evaluation-report.md)
-- [离线闭环演示](examples/minimal-agent/README.md)\n- [真实 LLM + 工具调用演示](examples/llm-tool-agent/README.md)
+- [离线闭环演示](examples/minimal-agent/README.md)
+- [真实 LLM + 工具调用演示](examples/llm-tool-agent/README.md)
