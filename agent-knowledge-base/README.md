@@ -26,3 +26,4 @@
 - [评测报告模板](templates/evaluation-report.md)
 - [离线闭环演示](examples/minimal-agent/README.md)
 - [真实 LLM + 工具调用演示](examples/llm-tool-agent/README.md)
+- [多步研究 Agent 与可核验引用](examples/research-agent/README.md)
