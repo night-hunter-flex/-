@@ -10,7 +10,7 @@
 | [学习路线](docs/learning-roadmap.md) | 四阶段学习与验收产物 |
 | [框架选型](docs/framework-selection.md) | 用任务约束比较框架，而不是比较演示效果 |
 | [Harness 工程](docs/harness-engineering.md) | 上下文、预算、恢复、幂等与追踪 |
-| [工具与 MCP](docs/tools-and-mcp.md) | 工具契约、协议角色与权限 |
+| [工具与 MCP](docs/tools-and-mcp.md) | **两张架构 / 时序图**、JSON-RPC 报文、传输、安全与 5 组 few-shot |
 | [多 Agent 协作](docs/multi-agent.md) | 委派、交接、汇总与成本对照 |
 | [评测指南](docs/evaluation.md) | 任务集、指标、失败分类与回归 |
 | [安全指南](docs/safety.md) | 不可信输入、权限、外部副作用与测试 |
